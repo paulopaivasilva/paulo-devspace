@@ -2,11 +2,8 @@
 
 import { Hero } from "@/app/components/sections/Hero";
 import { FloatingNavbar } from "@/app/components/layout/FloatingNavbar";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 export default function Home() {
-  useSmoothScroll();
-
   return (
     <main className="bg-[#0F172A] text-white">
       <FloatingNavbar />

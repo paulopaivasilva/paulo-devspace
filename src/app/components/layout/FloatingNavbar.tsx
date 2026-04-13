@@ -37,7 +37,6 @@ export function FloatingNavbar() {
       const ctaTop = rect.top + window.scrollY;
       const ctaBottom = ctaTop + rect.height;
 
-      // 🔥 eixo Y (baixo → topo)
       const startY = ctaBottom + 50;
       const endY = 50;
 
@@ -46,7 +45,6 @@ export function FloatingNavbar() {
       const newY = startY - (startY - endY) * progress;
       setOffsetY(newY);
 
-      // 🔥 eixo X (esquerda → centro)
       const startX = rect.left;
       const centerX = window.innerWidth / 2;
 
@@ -57,7 +55,6 @@ export function FloatingNavbar() {
       const newX = startX + (targetX - startX) * progress;
       setOffsetX(newX);
 
-      // 🔥 seção ativa
       for (const item of items) {
         const section = document.getElementById(item.id);
         if (!section) continue;
@@ -108,7 +105,7 @@ export function FloatingNavbar() {
 
     const y = section.getBoundingClientRect().top + window.scrollY;
 
-    smoothScrollTo(y, 700);
+    smoothScrollTo(y, 40);
   };
 
   return (
