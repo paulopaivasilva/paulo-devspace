@@ -5,7 +5,7 @@ import { FloatingNavbar } from "@/app/components/layout/FloatingNavbar";
 
 export default function Home() {
   return (
-    <main className="bg-[#0F172A] text-white">
+    <main className="bg-[#0F172A] text-white md:px-10 p-8">
       <FloatingNavbar />
 
       <Hero />

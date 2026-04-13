@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { smoothScrollTo } from "@/lib/smoothScroll";
+import { Menu } from "lucide-react";
 
 const items = [
   { label: "Início", id: "inicio" },
@@ -17,12 +18,24 @@ export function FloatingNavbar() {
   const [active, setActive] = useState("inicio");
   const [offsetY, setOffsetY] = useState(0);
   const [offsetX, setOffsetX] = useState(0);
+  const [highlightStyle, setHighlightStyle] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const navbarRef = useRef<HTMLDivElement | null>(null);
 
-  const [highlightStyle, setHighlightStyle] = useState({});
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,7 +92,6 @@ export function FloatingNavbar() {
     };
   }, []);
 
-  // 🔥 highlight correto (X + Y)
   useEffect(() => {
     const index = items.findIndex((i) => i.id === active);
     const el = itemRefs.current[index];
@@ -89,7 +101,20 @@ export function FloatingNavbar() {
 
     const elRect = el.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    console.log(elRect.width, elRect.height)
+
+    if (isMobile && isOpen) {
+      const itemHeight = el.offsetHeight;
+      const gap = 8; // gap-2
+
+      setHighlightStyle({
+        width: `${containerRect.width - 12}px`,
+        height: `${itemHeight - 6}px`,
+        left: `6px`,
+        top: `${index * (itemHeight + gap) + 15}px`,
+      });
+
+      return;
+    }
 
     setHighlightStyle({
       width: `${elRect.width - 8}px`,
@@ -97,7 +122,25 @@ export function FloatingNavbar() {
       left: `${elRect.left - containerRect.left + 4}px`,
       top: `${elRect.top - containerRect.top + 2}px`,
     });
-  }, [active]);
+  }, [active, isMobile, isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!isOpen) return;
+
+      const target = event.target as Node;
+
+      if (containerRef.current && !containerRef.current.contains(target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const scrollTo = (id: string) => {
     const section = document.getElementById(id);
@@ -119,29 +162,54 @@ export function FloatingNavbar() {
     >
       <div
         ref={containerRef}
-        className="relative flex items-center gap-2 rounded-full bg-[#1E293B] px-3 py-2 backdrop-blur-xl"
+        className={cn(
+          "relative flex items-center bg-[#1E293B] backdrop-blur-xl md:rounded-full rounded-3xl transition-all duration-300 overflow-hidden",
+          isMobile
+            ? isOpen
+              ? "flex-col px-4 py-3 gap-2 items-center rounded-3xl"
+              : "px-4 py-2 justify-center"
+            : "px-3 py-2 gap-2"
+        )}
       >
-        {/* highlight */}
-        <div
-          className="absolute rounded-full bg-[#D9D9D9] transition-all duration-300 ease-out"
-          style={highlightStyle}
-        />
+        {(!isMobile || isOpen) && (
+          <div
+            className="absolute rounded-full bg-[#D9D9D9] transition-all duration-300 ease-out"
+            style={highlightStyle}
+          />
+        )}
 
-        {items.map((item, index) => (
+        {isMobile && !isOpen && (
           <button
-            key={item.id}
-            ref={(el) => {
-              itemRefs.current[index] = el;
-            }}
-            onClick={() => scrollTo(item.id)}
-            className={cn(
-              "relative z-10 px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors cursor-pointer",
-              active === item.id ? "text-[#1E293B]" : "text-white"
-            )}
+            onClick={() => setIsOpen(true)}
+            className="flex items-center gap-2 text-white text-base font-medium px-3 py-2"
           >
-            {item.label}
+            <span>{items.find((i) => i.id === active)?.label}</span>
+            <Menu size={18} />
           </button>
-        ))}
+        )}
+
+        {(!isMobile || isOpen) &&
+          items.map((item, index) => (
+            <button
+              key={item.id}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
+              onClick={() => {
+                scrollTo(item.id);
+                if (isMobile) setIsOpen(false);
+              }}
+              className={cn(
+                "relative z-10 px-4 py-2 text-base font-medium whitespace-nowrap transition-all duration-300 cursor-pointer",
+                isMobile && isOpen && "w-full text-center",
+                active === item.id
+                  ? "text-[#1E293B]"
+                  : "text-white"
+              )}
+            >
+              {item.label}
+            </button>
+          ))}
       </div>
     </div>
   );
