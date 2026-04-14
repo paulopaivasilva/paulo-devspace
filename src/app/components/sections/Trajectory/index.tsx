@@ -67,7 +67,7 @@ export function Trajectory() {
         style={{ height: `${dataTrajectory.length * 100}vh` }}
       >
 
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        <div className="sticky top-0 h-screen flex items-start md:items-center overflow-hidden pt-16 md:pt-0">
 
           <div className="w-full max-w-7xl mx-auto">
 
