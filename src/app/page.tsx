@@ -8,11 +8,13 @@ import { MethodSection } from "./components/sections/Method";
 import { AboutSection } from "./components/sections/About";
 import { ContactSection } from "./components/sections/Contact";
 import { Footer } from "./components/sections/Footer";
+import { FloatingWhatsapp } from "./components/shared/FloatingWhatsapp";
 
 export default function Home() {
   return (
     <main className="bg-[#0F172A] text-white">
       <FloatingNavbar />
+      <FloatingWhatsapp />
 
       <Hero />
 

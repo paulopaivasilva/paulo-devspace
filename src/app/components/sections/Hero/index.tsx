@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTypingWords } from "@/hooks/useRotatingWords";
 import { Button } from "@/app/components/shared/Button"
+import Link from "next/link";
 
 export function Hero() {
   const word = useTypingWords();
@@ -36,11 +37,15 @@ export function Hero() {
           </div>
 
           <div id="hero-cta" className="mt-8 flex gap-4">
-            <Button>Explorar Projetos</Button>
+            <Link href="#projetos">
+              <Button>Explorar Projetos</Button>
+            </Link>
 
-            <Button variant="secondary">
-              Entrar em Contato
-            </Button>
+            <Link href="#contato">
+              <Button variant="secondary">
+                Entrar em Contato
+              </Button>
+            </Link>
           </div>
         </div>
 
