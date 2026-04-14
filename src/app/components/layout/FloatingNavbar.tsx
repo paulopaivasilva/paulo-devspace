@@ -51,7 +51,7 @@ export function FloatingNavbar() {
       const ctaBottom = ctaTop + rect.height;
 
       const startY = ctaBottom + 50;
-      const endY = 50;
+      const endY = 20;
 
       const progress = Math.min(scrollY / 400, 1);
 

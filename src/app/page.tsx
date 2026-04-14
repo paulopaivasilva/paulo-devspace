@@ -2,6 +2,7 @@
 
 import { Hero } from "@/app/components/sections/Hero";
 import { FloatingNavbar } from "@/app/components/layout/FloatingNavbar";
+import { Trajectory } from "./components/sections/Trajectory";
 
 export default function Home() {
   return (
@@ -10,8 +11,7 @@ export default function Home() {
 
       <Hero />
 
-      {/* próximas seções */}
-      <section id="trajetoria" className="h-screen">Trajetória</section>
+      <Trajectory />
       <section id="projetos" className="h-screen">Projetos</section>
       <section id="metodo" className="h-screen">Método</section>
       <section id="sobre" className="h-screen">Sobre</section>
