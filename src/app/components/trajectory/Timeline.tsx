@@ -9,17 +9,14 @@ export function Timeline({ items, activeIndex }: TimelineProps) {
   return (
     <div className="relative">
 
-      {/* linha baseada no conteúdo */}
       <div className="absolute top-1.5 left-0 h-0.5 bg-gray-300 z-0 w-full" />
 
-      {/* wrapper alinhado com cards */}
       <div className="flex gap-6">
         {items.map((item, index) => (
           <div
             key={index}
             className="min-w-75 md:min-w-90 flex flex-col items-start"
           >
-            {/* ponto */}
             <div
               className={cn(
                 "relative z-10 w-3 h-3 rounded-full mb-2 transition-all duration-300",
@@ -31,7 +28,6 @@ export function Timeline({ items, activeIndex }: TimelineProps) {
               )}
             />
 
-            {/* label */}
             <span
               className={cn(
                 "text-xs transition-colors",

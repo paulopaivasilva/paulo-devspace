@@ -1,4 +1,3 @@
-// components/trajectory/TrajectoryCard.tsx
 import { cn } from "@/lib/utils";
 
 interface TrajectoryCardProps {
@@ -29,27 +28,22 @@ export function TrajectoryCard({
         isActive ? "text-white" : "text-gray-900"
       )}
     >
-      {/* período */}
       <span className="text-sm font-semibold text-gray-800">
         {period}
       </span>
 
-      {/* empresa */}
       <h3 className="mt-3 text-2xl font-bold text-gray-900">
         {company}
       </h3>
 
-      {/* cargo */}
       <p className="mt-1 text-base text-gray-500">
         {role}
       </p>
 
-      {/* descrição */}
       <p className="mt-4 text-sm text-gray-600 leading-relaxed">
         {description}
       </p>
 
-      {/* stack */}
       <div className="mt-6 flex flex-wrap gap-2">
         {stack.map((tech, index) => (
           <span

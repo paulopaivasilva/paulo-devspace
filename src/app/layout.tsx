@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Paulo Devspace",
     /* images: [
       {
-        url: "/images/og-image.png", // 🔥 criar depois
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Portfólio Paulo Paiva",

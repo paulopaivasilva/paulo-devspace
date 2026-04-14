@@ -3,19 +3,30 @@
 import { Hero } from "@/app/components/sections/Hero";
 import { FloatingNavbar } from "@/app/components/layout/FloatingNavbar";
 import { Trajectory } from "./components/sections/Trajectory";
+import { ProjectsSection } from "./components/sections/Projects";
+import { MethodSection } from "./components/sections/Method";
+import { AboutSection } from "./components/sections/About";
+import { ContactSection } from "./components/sections/Contact";
+import { Footer } from "./components/sections/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#0F172A] text-white md:px-10 p-8">
+    <main className="bg-[#0F172A] text-white">
       <FloatingNavbar />
 
       <Hero />
 
       <Trajectory />
-      <section id="projetos" className="h-screen">Projetos</section>
-      <section id="metodo" className="h-screen">Método</section>
-      <section id="sobre" className="h-screen">Sobre</section>
-      <section id="contato" className="h-screen">Contato</section>
+
+      <ProjectsSection />
+      
+      <MethodSection />
+      
+      <AboutSection />
+      
+      <ContactSection />
+
+      <Footer />
     </main>
   );
 }

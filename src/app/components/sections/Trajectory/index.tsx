@@ -32,10 +32,8 @@ export function Trajectory() {
 
       const rawProgress = -start / (end - start);
 
-      // 🎯 progresso real
       targetProgress = Math.min(Math.max(rawProgress, 0), 1);
 
-      // 🔥 suavização (lerp)
       smoothProgress += (targetProgress - smoothProgress) * 0.08;
 
       const container = track.parentElement;
@@ -50,7 +48,6 @@ export function Trajectory() {
 
       track.style.transform = `translateX(-${translateX}px)`;
 
-      // timeline continua usando progress real (resposta rápida)
       const index = Math.floor(targetProgress * dataTrajectory.length);
       setActiveIndex(Math.min(index, dataTrajectory.length - 1));
 
@@ -63,28 +60,30 @@ export function Trajectory() {
   }, []);
 
   return (
-    <section id="trajetoria" className="relative bg-gradient-to-b from-[#F5F5F5] to-[#EEF2F7]">
+    <section id="trajetoria" className="relative bg-linear-to-b from-[#F5F5F5] to-[#EEF2F7] md:px-10 p-8">
 
-      {/* altura dinâmica */}
       <div
         className="relative"
         style={{ height: `${dataTrajectory.length * 100}vh` }}
       >
 
-        {/* sticky */}
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
 
           <div className="w-full max-w-7xl mx-auto">
 
-            {/* título */}
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
-              Trajetória
-            </h2>
+            <div className="flex flex-col gap-4 mt-10">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+                Trajetória que{" "}
+                <span className="text-[#3B82F6]">constrói experiência</span>
+              </h2>
 
-            {/* layout com svg + conteúdo */}
+              <p className="text-gray-600 max-w-2xl">
+                Uma jornada marcada por evolução constante, desafios reais e construção de soluções digitais.
+              </p>
+            </div>
+
             <div className="flex flex-col md:flex-row gap-10 items-center">
 
-              {/* SVG */}
               <div className="w-full flex">
                 <Image
                   src="/images/trajectory.svg"
@@ -95,18 +94,15 @@ export function Trajectory() {
                 />
               </div>
 
-              {/* conteúdo */}
               <div className="w-full md:w-2/3">
 
                 <div className="overflow-hidden p-2">
                   <div ref={trackRef} className="will-change-transform">
 
-                    {/* timeline */}
                     <div className="mb-10 w-max">
                       <Timeline items={dataTrajectory} activeIndex={activeIndex} />
                     </div>
 
-                    {/* cards */}
                     <div className="flex gap-6">
                       {dataTrajectory.map((item, index) => (
                         <TrajectoryCard key={index} {...item} />

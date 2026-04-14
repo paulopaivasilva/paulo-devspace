@@ -104,7 +104,7 @@ export function FloatingNavbar() {
 
     if (isMobile && isOpen) {
       const itemHeight = el.offsetHeight;
-      const gap = 8; // gap-2
+      const gap = 8;
 
       setHighlightStyle({
         width: `${containerRect.width - 12}px`,
