@@ -1,5 +1,6 @@
 "use client";
 
+import { projects } from "@/data/projects";
 import { MainProject } from "./MainProject";
 import { PrototypeCarousel } from "./PrototypeCarousel";
 
@@ -23,32 +24,17 @@ export function ProjectsSection() {
         </div>
 
         <div className="flex flex-col gap-32">
-          <MainProject
-            title="Kyoris Tech"
-            description="Plataforma e presença digital focada em conversão e posicionamento estratégico."
-            tags={["React", "UX", "Branding"]}
-            image="images/kyoris.png"
-            link="https://kyoristech.com.br"
-            reverse={false}
-          />
-
-          <MainProject
-            title="Orm Intelligence"
-            description="Sistema inteligente para análise de currículos com foco em performance e escala."
-            tags={["AI", "React", "FastAPI"]}
-            image="images/orm.png"
-            link="https://orm-mvp.vercel.app"
-            reverse={true}
-          />
-
-          <MainProject
-            title="MEI Digital"
-            description="Site estratégico para captação de clientes locais com foco em autoridade."
-            tags={["Landing Page", "SEO", "Conversão"]}
-            image="images/mei.png"
-            link="https://meiportaldoempreendedor.com.br/"
-            reverse={false}
-          />
+          {projects.map((item, i) => (
+            <MainProject
+              key={i}
+              title={item.title}
+              description={item.description}
+              tags={item.tags}
+              image={item.image}
+              link={item.link}
+              reverse={item.reverse}
+            />
+          ))}
         </div>
 
         <PrototypeCarousel />
