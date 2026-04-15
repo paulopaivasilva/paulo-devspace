@@ -162,7 +162,7 @@ export function Trajectory() {
                       ref={timelineScrollRef}
                       className={`
                         mb-6 md:mb-10
-                        ${isMobile ? "overflow-x-auto pb-2 pointer-events-none scrollbar-hide" : "w-max"}
+                        ${isMobile ? "overflow-x-auto pb-2 pointer-events-none scrollbar-hide p-1" : "w-max"}
                       `}
                     >
                       <Timeline
@@ -176,14 +176,14 @@ export function Trajectory() {
                       ref={scrollRef}
                       className={`
                         flex w-full
-                        ${isMobile ? "gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" : "gap-10"}
+                        ${isMobile ? "gap-10 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" : "gap-10"}
                       `}
                     >
                       {dataTrajectory.map((item, index) => (
                         <div
                           key={index}
                           className={`
-                            ${isMobile ? "min-w-50 max-w-50 snap-start shrink-0" : ""}
+                            ${isMobile ? "w-full max-w-70 snap-start shrink-0 scroll-smooth" : ""}
                           `}
                         >
                           <TrajectoryCard {...item} />
