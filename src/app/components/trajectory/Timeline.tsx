@@ -3,20 +3,28 @@ import { cn } from "@/lib/utils";
 interface TimelineProps {
   items: { period: string }[];
   activeIndex: number;
+  isMobile?: boolean;
 }
 
-export function Timeline({ items, activeIndex }: TimelineProps) {
+export function Timeline({
+  items,
+  activeIndex,
+  isMobile = false,
+}: TimelineProps) {
   return (
-    <div className="relative">
+    <div className={cn("relative", isMobile ? "min-w-max" : "w-max")}>
+      <div className="absolute top-1.5 left-0 right-0 h-0.5 bg-gray-300 z-0" />
 
-      <div className="absolute top-1.5 left-0 h-0.5 bg-gray-300 z-0 w-full" />
-
-      <div className="flex gap-6">
+      <div className={cn("flex", isMobile ? "gap-4" : "gap-10")}>
         {items.map((item, index) => (
           <div
             key={index}
-            className="min-w-75 md:min-w-90 flex flex-col items-start"
-          >
+            className={cn(
+              "flex flex-col",
+              isMobile
+                ? "min-w-[280px] items-start"
+                : "min-w-[360px] items-start"
+            )}>
             <div
               className={cn(
                 "relative z-10 w-3 h-3 rounded-full mb-2 transition-all duration-300",
@@ -30,7 +38,7 @@ export function Timeline({ items, activeIndex }: TimelineProps) {
 
             <span
               className={cn(
-                "text-xs transition-colors",
+                "text-xs transition-colors whitespace-nowrap",
                 index === activeIndex
                   ? "text-gray-900 font-medium"
                   : "text-gray-400"
