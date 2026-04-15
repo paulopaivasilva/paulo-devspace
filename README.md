@@ -104,10 +104,10 @@ Deixa uma estrela aí — ajuda mais do que parece 😉
 
 ```bash
 # Clone o projeto
-git clone https://github.com/seu-usuario/seu-repo
+git clone https://github.com/paulopaivasilva/paulo-devspace
 
 # Entre na pasta
-cd seu-repo
+cd paulo-devspace
 
 # Instale as dependências
 npm install
