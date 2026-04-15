@@ -9,23 +9,28 @@ export function useTypingWords() {
 
   useEffect(() => {
     const currentWord = words[wordIndex];
-    let timeout: NodeJS.Timeout;
 
-    const typingSpeed = isDeleting ? 50 : 100;
-    const pauseTime = 1200;
+    const typingSpeed = isDeleting ? 40 : 80;
+    const pauseTime = 1000;
+
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (!isDeleting && displayedText === currentWord) {
       timeout = setTimeout(() => setIsDeleting(true), pauseTime);
     } else if (isDeleting && displayedText === "") {
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % words.length);
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+      }, 200);
     } else {
       timeout = setTimeout(() => {
-        setDisplayedText((prev) =>
-          isDeleting
-            ? prev.slice(0, -1)
-            : currentWord.slice(0, prev.length + 1)
-        );
+        setDisplayedText((prev) => {
+          if (isDeleting) {
+            return prev.substring(0, prev.length - 1);
+          } else {
+            return currentWord.substring(0, prev.length + 1);
+          }
+        });
       }, typingSpeed);
     }
 
