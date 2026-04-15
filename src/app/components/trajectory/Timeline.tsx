@@ -22,8 +22,8 @@ export function Timeline({
             className={cn(
               "flex flex-col",
               isMobile
-                ? "min-w-[280px] items-start"
-                : "min-w-[360px] items-start"
+                ? "min-w-70 items-start"
+                : "min-w-90 items-start"
             )}>
             <div
               className={cn(
