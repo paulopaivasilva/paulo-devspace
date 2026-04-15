@@ -26,7 +26,7 @@ export function FloatingWhatsapp() {
 
   return (
     <Link
-      href="https://wa.me/55119448245488"
+      href="https://wa.me/5511948245488"
       target="_blank"
       rel="noopener noreferrer"
       className={`
