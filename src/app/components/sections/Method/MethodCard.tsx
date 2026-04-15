@@ -8,7 +8,6 @@ export function MethodCard({ number, title, description }: Props) {
   return (
     <div className="relative group rounded-2xl p-6 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition duration-300">
 
-      {/* número grande no fundo */}
       <span className="absolute top-4 right-4 text-5xl font-bold text-[#3B82F6]/20 group-hover:text-[#3B82F6]/40 transition blur-[0.2px]">
         {number}
       </span>

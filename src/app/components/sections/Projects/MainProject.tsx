@@ -22,7 +22,6 @@ export function MainProject({
       className={`flex flex-col md:flex-row items-center gap-12 ${reverse ? "md:flex-row-reverse" : ""
         }`}
     >
-      {/* IMAGEM */}
       <div className="w-full md:w-1/2 relative group">
         <div className="absolute inset-0 bg-[#3B82F6]/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500" />
 
@@ -33,7 +32,6 @@ export function MainProject({
         />
       </div>
 
-      {/* TEXTO */}
       <div className="w-full md:w-1/2 flex flex-col gap-6">
         <h3 className="text-3xl font-semibold">{title}</h3>
 

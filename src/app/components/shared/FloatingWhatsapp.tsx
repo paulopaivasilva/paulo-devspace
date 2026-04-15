@@ -41,7 +41,6 @@ export function FloatingWhatsapp() {
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}
       `}
     >
-      {/* animação de “vida” */}
       <div className="absolute inset-0 rounded-full bg-[#25D366]/20 blur-md animate-pulse" />
 
       <FaWhatsapp size={22} className="relative z-10" />

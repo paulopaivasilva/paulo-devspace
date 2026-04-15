@@ -8,12 +8,10 @@ export function MethodSection() {
       id="metodo"
       className="w-full py-32 px-6 bg-linear-to-b from-[#EEF2F7] to-[#F8FAFC] text-gray-900 relative overflow-hidden"
     >
-      {/* glow sutil */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#3B82F610,transparent_60%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-20">
 
-        {/* HEADER */}
         <div className="flex flex-col gap-4">
           <h2 className="text-4xl md:text-5xl font-bold">
             Método que{" "}
@@ -27,7 +25,6 @@ export function MethodSection() {
           </p>
         </div>
 
-        {/* ETAPAS */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
           <MethodCard
