@@ -183,7 +183,7 @@ export function Trajectory() {
                         <div
                           key={index}
                           className={`
-                            ${isMobile ? "min-w-70 snap-start shrink-0" : ""}
+                            ${isMobile ? "min-w-50 max-w-50 snap-start shrink-0" : ""}
                           `}
                         >
                           <TrajectoryCard {...item} />

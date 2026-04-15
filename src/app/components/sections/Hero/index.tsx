@@ -19,7 +19,7 @@ export function Hero() {
           <h1 className="md:text-5xl text-[40px] font-bold leading-tight">
             ENGENHARIA{" "}
             <span className="text-[#D9D9D9]">FRONT-END</span> GUIADA POR{" "}<br className="md:hidden flex" />
-            <span className="text-[#D9D9D9]">{word}</span>
+            <span className="text-[#D9D9D9]">{word}</span>.
           </h1>
 
           <p className="mt-6 text-lg text-gray-300">
