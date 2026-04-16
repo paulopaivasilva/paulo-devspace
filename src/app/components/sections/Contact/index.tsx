@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
-import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
 
 export function ContactSection() {
   return (
@@ -75,6 +75,24 @@ export function ContactSection() {
               </p>
 
               <div className="mt-2 flex flex-col gap-4">
+                <Link
+                  href="https://github.com/paulopaivasilva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4 transition duration-300 hover:border-[#E879F9]/30 hover:bg-white/10"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="rounded-xl bg-[#0A66C2]/10 p-3 text-[#60A5FA]">
+                      <FaGithub size={20} />
+                    </div>
+                    <p className="font-medium text-white">GitHub</p>
+                  </div>
+
+                  <span className="text-sm text-gray-500 transition group-hover:text-white">
+                    Abrir →
+                  </span>
+                </Link>
+
                 <Link
                   href="https://instagram.com/paulopaivasilva"
                   target="_blank"

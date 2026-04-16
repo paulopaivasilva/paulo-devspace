@@ -30,7 +30,18 @@ export function PrototypeCard({
         className="w-full h-full object-cover transition duration-500 group-hover:scale-[1.06]"
       />
 
-      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 backdrop-blur-[2px] flex flex-col justify-end p-5 gap-2">
+      <div
+        className="
+          absolute inset-0 
+          bg-black/60 backdrop-blur-[2px]
+          flex flex-col justify-end p-5 gap-2
+          transition duration-300
+
+          opacity-80
+          md:opacity-0
+          md:group-hover:opacity-100
+        "
+      >
 
         <span className="text-white font-semibold text-base">
           {title}
